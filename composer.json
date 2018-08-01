@@ -1,0 +1,47 @@
+{
+    "name": "andersonmadeira/multiple-featured-images",
+    "license": "MIT",
+    "description": "Multiple Featured Images for your WP Posts",
+    "homepage": "https://github.com/andersonmadeira/multiple-featured-images",
+    "authors": [
+        {
+            "name": "Anderson Madeira",
+            "email": "andersonmadeiracs@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "keywords": [
+        "featured",
+        "images",
+        "wordpress",
+        "multiple",
+        "wp",
+        "plugin"
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "composer/installers": "~1.0"
+    },
+    "autoload": {
+        "files": [
+            "wp-password-bcrypt.php"
+        ]
+    },
+    "support": {
+        "source": "https://github.com/andersonmadeira/multiple-featured-images",
+        "docs": "https://github.com/andersonmadeira/multiple-featured-images/wiki",
+        "issues": "https://github.com/andersonmadeira/multiple-featured-images/issues"
+    },
+    "archive": {
+        "exclude": [
+            ".editorconfig",
+            ".gitattributes",
+            ".gitignore",
+            ".travis.yml",
+            "CONTRIBUTING.md",
+            "phpcs.xml",
+            "phpunit.xml",
+            "tests"
+        ]
+    }
+}
