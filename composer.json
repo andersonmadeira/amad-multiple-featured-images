@@ -1,11 +1,13 @@
 {
     "name": "andersonmadeira/multiple-featured-images",
     "license": "MIT",
+    "type": "library",
     "description": "Multiple Featured Images for your WP Posts",
     "homepage": "https://github.com/andersonmadeira/multiple-featured-images",
     "authors": [
         {
             "name": "Anderson Madeira",
+            "homepage": "https://andersonmadeira.github.io/",
             "email": "andersonmadeiracs@gmail.com",
             "role": "Developer"
         }
@@ -19,7 +21,7 @@
         "plugin"
     ],
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=5.6.28",
         "composer/installers": "~1.0"
     },
     "autoload": {
