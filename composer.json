@@ -1,13 +1,13 @@
 {
-    "name": "andersonmadeira/multiple-featured-images",
+    "name": "andersonmadeira/wp-multiple-featured-post-images",
     "license": "MIT",
     "type": "library",
     "description": "Multiple Featured Images for your WP Posts",
-    "homepage": "https://github.com/andersonmadeira/multiple-featured-images",
+    "homepage": "https://github.com/andersonmadeira/wp-multiple-featured-post-images",
     "authors": [
         {
             "name": "Anderson Madeira",
-            "homepage": "https://andersonmadeira.github.io/",
+            "homepage": "https://github.com/andersonmadeira/",
             "email": "andersonmadeiracs@gmail.com",
             "role": "Developer"
         }
@@ -26,13 +26,13 @@
     },
     "autoload": {
         "files": [
-            "multiple-featured-images.php"
+            "wp-multiple-featured-post-images.php"
         ]
     },
     "support": {
-        "source": "https://github.com/andersonmadeira/multiple-featured-images",
-        "docs": "https://github.com/andersonmadeira/multiple-featured-images/wiki",
-        "issues": "https://github.com/andersonmadeira/multiple-featured-images/issues"
+        "source": "https://github.com/andersonmadeira/wp-multiple-featured-post-images",
+        "docs": "https://github.com/andersonmadeira/wp-multiple-featured-post-images/wiki",
+        "issues": "https://github.com/andersonmadeira/wp-multiple-featured-post-images/issues"
     },
     "archive": {
         "exclude": [

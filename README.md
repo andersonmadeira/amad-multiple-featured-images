@@ -1,2 +1,2 @@
-# multiple-featured-images
-WP Plugin that enables multiple featured images in post types
+# multiple-featured-post-images
+WP Plugin that enables multiple featured images in any post types
