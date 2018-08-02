@@ -1,4 +1,6 @@
 (function ($) {
+    'use strict';
+    
     $(document).ready(function () {
         var frame,
             $meta_box = $('#amad_mfi_noticia_destaque.postbox'),
