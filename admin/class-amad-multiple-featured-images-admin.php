@@ -28,6 +28,15 @@ class AMad_Multiple_Featured_Images_Admin extends AMad_Multiple_Featured_Images_
 		$this->images_data = $data;
 	}
 
+	/**
+	 * @param array slug
+	 */
+	public function get_image_url($post_id, $slug) {
+		$meta_name = $this->meta_prefix . $slug;
+		$mfi_id = get_post_meta( $post_id, $meta_name, true );
+		return wp_get_attachment_url( $mfi_id );
+	}
+
 	public function enqueue_styles() {
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/amad-multiple-featured-images.css', array(), $this->version, 'all' );
@@ -92,7 +101,7 @@ class AMad_Multiple_Featured_Images_Admin extends AMad_Multiple_Featured_Images_
 		}
 	}
 
-	public function get_thumbnail() {
+	public function get_thumbnail_ajax() {
 
 		check_ajax_referer( 'mfi-get-thumbnail', 'security' );
 	
@@ -125,7 +134,7 @@ class AMad_Multiple_Featured_Images_Admin extends AMad_Multiple_Featured_Images_
 		$this->add_action( 'admin_enqueue_scripts', $this, 'enqueue_styles' );
 		$this->add_action( 'admin_enqueue_scripts', $this, 'enqueue_scripts' );
 		$this->add_action( 'add_meta_boxes', $this, 'add_custom_meta_boxes' );
-		$this->add_action( 'wp_ajax_mfi_get_thumbnail', $this, 'get_thumbnail' );
+		$this->add_action( 'wp_ajax_mfi_get_thumbnail', $this, 'get_thumbnail_ajax' );
 		$this->add_action( 'save_post', $this, 'save_noticia_destaque' );
 
 	}

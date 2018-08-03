@@ -60,6 +60,10 @@ class AMad_Multiple_Featured_Images {
 		return $this->images_data;
 	}
 
+	public function get_image_url($post_id, $slug) {
+		return $this->admin->get_image_url($post_id, $slug);
+	}
+
 	public function get_plugin_name() {
 		return $this->plugin_name;
 	}
