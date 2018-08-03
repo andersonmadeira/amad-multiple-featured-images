@@ -6,15 +6,19 @@ class AMad_Multiple_Featured_Images {
 
 	protected $version;
 
+	protected $images_data;
+
 	public function __construct() {
 
 		if ( defined( 'AMAD_MFI_VERSION' ) ) {
 			$this->version = AMAD_MFI_VERSION;
 		} else {
-			$this->version = '1.0.2';
+			$this->version = '1.0.5';
 		}
 
 		$this->plugin_name = 'amad-multiple-featured-images';
+
+		$this->images_data = array();
 
 		$this->load_dependencies();
 
@@ -36,10 +40,24 @@ class AMad_Multiple_Featured_Images {
 
 	}
 
+	/**
+	 * Registers a new featured image
+	 * @param string Image data array ( slug, display name )
+	 */
+	public function register_image($data) {
+		array_push( $this->images_data, $data );
+	}
+
 	public function run() {
+		$this->admin->set_images_data( $this->get_images_data() );
+
 		$this->i18n->execute_hooks();
 		$this->admin->execute_hooks();
 		$this->public->execute_hooks();
+	}
+
+	public function get_images_data() {
+		return $this->images_data;
 	}
 
 	public function get_plugin_name() {

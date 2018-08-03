@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'AMAD_MFI_VERSION', '1.0.0' );
+define( 'AMAD_MFI_VERSION', '1.0.5' );
 
 function amad_activate_multiple_featured_images() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-amad-multiple-featured-images-activator.php';
@@ -34,12 +34,4 @@ register_deactivation_hook( __FILE__, 'deactivate_multiple_featured_images' );
 
 require plugin_dir_path( __FILE__ ) . 'includes/class-amad-multiple-featured-images.php';
 
-function amad_run_multiple_featured_images() {
-
-	$plugin = new AMad_Multiple_Featured_Images();
-	$plugin->run();
-
-}
-
-amad_run_multiple_featured_images();
 ?>

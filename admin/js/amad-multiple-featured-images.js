@@ -1,18 +1,17 @@
 (function ($) {
 
     $(document).ready(function () {
-        var frame,
-            $meta_box = $('#amad_mfi_noticia_destaque.postbox'),
-            $add_link = $meta_box.find('.select-featured'),
-            $del_link = $meta_box.find('.delete-featured'),
-            $img_container = $meta_box.find('.mfi-img-container'),
-            $id_input = $meta_box.find('.mfi-id-input');
+        var frame;
 
-        $add_link.attr('href', amad_mfi.upload_link);
-
-        $add_link.on('click', function (event) {
-
+        $('.amad_mfi_box .select-featured').on('click', function (event) {
             event.preventDefault();
+
+            $add_link = $(this); // addlink
+            $del_link = $add_link.closest('.amad_mfi_box').find('.delete-featured');
+            $img_container = $add_link.closest('.amad_mfi_box').find('.mfi-img-container');
+            $id_input = $add_link.closest('.amad_mfi_box').find('.mfi-id-input');
+            
+            $add_link.attr('href', amad_mfi.upload_link);
 
             if (frame) {
                 frame.open();
@@ -61,9 +60,14 @@
             frame.open();
         });
 
-        $del_link.on('click', function (event) {
+        $('.amad_mfi_box .delete-featured').on('click', function (event) {
 
             event.preventDefault();
+
+            $del_link = $(this); // addlink
+            $add_link = $del_link.closest('.amad_mfi_box').find('.select-featured');
+            $img_container = $del_link.closest('.amad_mfi_box').find('.mfi-img-container');
+            $id_input = $del_link.closest('.amad_mfi_box').find('.mfi-id-input');
 
             // Clear out the preview image
             $img_container.html('');

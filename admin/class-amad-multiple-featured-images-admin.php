@@ -6,6 +6,12 @@ class AMad_Multiple_Featured_Images_Admin extends AMad_Multiple_Featured_Images_
 
 	private $version;
 
+	private $images_data = array();
+
+	private $meta_prefix = 'mfi_id_';
+	
+	private $box_prefix = 'amad_mfi_box_';
+
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
@@ -13,6 +19,13 @@ class AMad_Multiple_Featured_Images_Admin extends AMad_Multiple_Featured_Images_
 
 		$this->define_hooks();
 
+	}
+
+	/**
+	 * @param array $data
+	 */
+	public function set_images_data($data) {
+		$this->images_data = $data;
 	}
 
 	public function enqueue_styles() {
@@ -45,26 +58,38 @@ class AMad_Multiple_Featured_Images_Admin extends AMad_Multiple_Featured_Images_
 	}
 
 	// Print the html of the metabox
-	public function noticia_destaque_html() {
+	public function mfi_metabox_html($post, $callback_args) {
 		global $post;
 
-		$mfi_id = get_post_meta( $post->ID, 'mfi_id', true );
+		$meta_name = $callback_args['args'][0];
+
+		$mfi_id = get_post_meta( $post->ID, $meta_name, true );
 
 		$mfi_thumb_image = wp_get_attachment_image($mfi_id, 'medium');
 
 		$mfi_has_thumb_image = ! empty( $mfi_thumb_image );
 
 		include plugin_dir_path( __FILE__ ) . 'partials/view-metabox-basic.php';
+
 	}
 
 	public function add_custom_meta_boxes() {
-		add_meta_box( 
-			'amad_mfi_noticia_destaque',
-			'Imagem miniatura',
-			array($this, 'noticia_destaque_html'),
-			'post',
-			'side'
-		);
+		
+
+		foreach ($this->images_data as $data) {
+			$meta_name = $this->meta_prefix . $data[0];
+			$box_name = $this->box_prefix . $data[0];
+
+			add_meta_box( 
+				$box_name,
+				$data[1],
+				array($this, 'mfi_metabox_html'),
+				'post',
+				'side',
+				'low',
+				array( $meta_name )
+			);
+		}
 	}
 
 	public function get_thumbnail() {
@@ -82,9 +107,13 @@ class AMad_Multiple_Featured_Images_Admin extends AMad_Multiple_Featured_Images_
 
 	// Save post data
 	public function save_noticia_destaque( $id ) {
-		if ( ! empty( $_POST['mfi_id'] ) ) {
-			add_post_meta( $id, 'mfi_id', $_POST['mfi_id'] );
-			update_post_meta( $id, 'mfi_id', $_POST['mfi_id'] );
+		foreach ($this->images_data as $data) {
+			$meta_name = $this->meta_prefix . $data[0];
+
+			if ( ! empty( $_POST[$meta_name] ) ) {
+				add_post_meta( $id, $meta_name, $_POST[$meta_name] );
+				update_post_meta( $id, $meta_name, $_POST[$meta_name] );
+			}
 		}
 	}
 
