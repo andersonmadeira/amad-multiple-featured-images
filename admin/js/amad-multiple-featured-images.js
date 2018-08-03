@@ -1,6 +1,5 @@
 (function ($) {
-    'use strict';
-    
+
     $(document).ready(function () {
         var frame,
             $meta_box = $('#amad_mfi_noticia_destaque.postbox'),
@@ -43,7 +42,7 @@
                         'id': attachment.id
                     }).done(function (data) {
                         console.log(data);
-                        $elem = $(data);
+                        var $elem = $(data);
                         $elem.removeAttr('width').removeAttr('height');
                         $img_container.html($elem);
                     });
@@ -80,4 +79,5 @@
 
         });
     });
+    
 })(jQuery);

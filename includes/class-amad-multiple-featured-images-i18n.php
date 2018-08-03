@@ -1,13 +1,7 @@
 <?php
 
-class AMad_Multiple_Featured_Images_i18n {
+class AMad_Multiple_Featured_Images_i18n extends AMad_Multiple_Featured_Images_Loader {
 
-
-	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
@@ -18,6 +12,10 @@ class AMad_Multiple_Featured_Images_i18n {
 
 	}
 
+	// Override
+	public function define_hooks() {
 
+	}
 
 }
+?>

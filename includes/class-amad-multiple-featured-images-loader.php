@@ -1,23 +1,16 @@
 <?php
 
-class AMad_Multiple_Featured_Images_Loader {
+abstract class AMad_Multiple_Featured_Images_Loader {
 
-	protected $actions;
+	private $actions = array();
 
-	protected $filters;
+	private $filters = array();
 
-	public function __construct() {
-
-		$this->actions = array();
-		$this->filters = array();
-
-	}
-
-	public function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
+	protected function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->actions = $this->add( $this->actions, $hook, $component, $callback, $priority, $accepted_args );
 	}
 
-	public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
+	protected function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
 		$this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
 	}
 
@@ -35,8 +28,7 @@ class AMad_Multiple_Featured_Images_Loader {
 
 	}
 
-	public function run() {
-
+	public function execute_hooks() {
 		foreach ( $this->filters as $hook ) {
 			add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
@@ -44,7 +36,9 @@ class AMad_Multiple_Featured_Images_Loader {
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
-
 	}
 
+	public abstract function define_hooks();
+
 }
+?>

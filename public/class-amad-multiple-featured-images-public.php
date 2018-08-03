@@ -1,6 +1,6 @@
 <?php
 
-class AMad_Multiple_Featured_Images_Public {
+class AMad_Multiple_Featured_Images_Public extends AMad_Multiple_Featured_Images_Loader {
 
 	private $plugin_name;
 
@@ -25,4 +25,15 @@ class AMad_Multiple_Featured_Images_Public {
 
 	}
 
+	/**
+	 * This will insert actions and filters
+	 */
+	public function define_hooks() {
+
+		$this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_styles' );
+		$this->add_action( 'wp_enqueue_scripts', $this, 'enqueue_scripts' );
+
+	}
+
 }
+?>
