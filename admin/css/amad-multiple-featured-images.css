@@ -1,1 +1,5 @@
 /* silence is golden */
+.mfi-img-container > img {
+    max-width: 100% !important;
+    height: auto !important;
+}

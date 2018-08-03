@@ -1,2 +1,2 @@
-# amad-multiple-featured-images.php
+# multiple-featured-post-images
 WP Plugin that enables multiple featured images in any post types

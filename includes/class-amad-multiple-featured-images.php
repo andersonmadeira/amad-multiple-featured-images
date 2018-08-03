@@ -11,7 +11,7 @@ class AMad_Multiple_Featured_Images {
 		if ( defined( 'AMAD_MFI_VERSION' ) ) {
 			$this->version = AMAD_MFI_VERSION;
 		} else {
-			$this->version = '1.0.0';
+			$this->version = '1.0.2';
 		}
 
 		$this->plugin_name = 'amad-multiple-featured-images';

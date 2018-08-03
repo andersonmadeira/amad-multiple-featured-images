@@ -1,5 +1,5 @@
 <!-- Your image container, which can be manipulated with js -->
-<div class="mfi-img-container" style="max-width: 200px;">
+<div class="mfi-img-container">
     <?php if ( $mfi_has_thumb_image ) echo $mfi_thumb_image; ?> 
 </div>
 
